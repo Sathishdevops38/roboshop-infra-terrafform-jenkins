@@ -19,7 +19,7 @@ pipeline {
                 script { 
                    withAWS(region:'us-west-2',credentials:'aws-creds') {
                         sh """ 
-                            cd 25-acm
+                            cd 30-ingress-alb
                             terraform init
                         """ 
                    }    
@@ -31,7 +31,7 @@ pipeline {
                 script { 
                   withAWS(region:'us-west-2',credentials:'aws-creds') {   
                     sh """ 
-                        cd 25-acm
+                        cd 30-ingress-alb
                         terraform plan
                     """ 
                   }    
@@ -43,7 +43,7 @@ pipeline {
                 script { 
                   withAWS(region:'us-west-2',credentials:'aws-creds') {   
                     sh """ 
-                        cd 25-acm
+                        cd 30-ingress-alb
                         terraform apply -auto-approve
                     """ 
                    } 

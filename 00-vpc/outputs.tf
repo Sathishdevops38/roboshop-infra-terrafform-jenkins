@@ -19,3 +19,15 @@ output "igw_id" {
 output "nat_id" {
   value = module.this.nat_id
 }
+
+output "public_rt" {
+  value = module.this.public_rt
+}
+
+output "private_rt" {
+  value = module.this.private_rt
+}
+
+output "database_rt" {
+  value = module.this.database_rt
+}

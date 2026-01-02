@@ -3,7 +3,7 @@ module "eks" {
   version = "~> 21.0" # this is module version
 
   name               = local.common_name_suffix
-  kubernetes_version = "1.32"
+  kubernetes_version = "1.33"
 
   addons = {
     coredns                = {}
@@ -45,7 +45,7 @@ module "eks" {
       # cluster nodes autoscaling
       min_size     = 2
       max_size     = 10
-      desired_size = 5
+      desired_size = 4
     }
 
     # green = {

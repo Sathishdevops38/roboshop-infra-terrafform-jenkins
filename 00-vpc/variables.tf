@@ -21,6 +21,9 @@ variable "database_subnet_cidrs" {
   default = ["10.0.21.0/24","10.0.22.0/24"]
 }
 
+variable "default_vpc_cidr"{
+  default = "172.31.0.0/16"
+}
 
 
 

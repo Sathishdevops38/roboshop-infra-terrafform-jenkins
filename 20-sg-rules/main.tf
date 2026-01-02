@@ -138,6 +138,33 @@ resource "aws_security_group_rule" "eks_control_plane_eks_node" {
   to_port           = 0
 }
 
+resource "aws_security_group_rule" "eks_control_plane_default" {
+  type              = "ingress"
+  security_group_id = local.eks_control_plane_sg_id
+  source_security_group_id = local.default_sg_id
+  from_port         = 443
+  protocol          = "tcp"
+  to_port           = 443
+}
+
+resource "aws_security_group_rule" "eks_control_plane_default_all" {
+  type              = "ingress"
+  security_group_id = local.eks_control_plane_sg_id
+  source_security_group_id = local.default_sg_id
+  from_port         = 0
+  protocol          = "-1"
+  to_port           = 0
+}
+
+resource "aws_security_group_rule" "eks_control_plane_default_ssh" {
+  type              = "ingress"
+  security_group_id = local.eks_control_plane_sg_id
+  cidr_blocks       = ["0.0.0.0/0"] 
+  from_port         = 22
+  protocol          = "-1"
+  to_port           = 22
+}
+
 # Mandatory for pod to pod communication. because pods can be in any node in VPC CIDR
 resource "aws_security_group_rule" "eks_node_vpc" {
   type              = "ingress"

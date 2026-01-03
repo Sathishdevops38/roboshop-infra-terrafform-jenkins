@@ -47,12 +47,12 @@ resource "aws_route53_record" "frontend" {
 }
 
 resource "aws_lb_listener_rule" "frontend" {
-  listener_arn = aws_lb_listener.ingress_alb.arn
+  listener_arn = module.ingress_alb.alb_arn
   priority     = 10
 
   action {
     type             = "forward"
-    target_group_arn = aws_lb_target_group.frontend.arn
+    target_group_arn = module.ingress_alb.tg_arn
   }
 
   condition {

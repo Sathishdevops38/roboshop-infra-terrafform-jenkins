@@ -47,7 +47,7 @@ resource "aws_route53_record" "frontend" {
 }
 
 resource "aws_lb_listener_rule" "frontend" {
-  listener_arn = module.ingress_alb.alb_arn
+  listener_arn = aws_lb_listener.ingress_alb.arn
   priority     = 10
 
   action {
